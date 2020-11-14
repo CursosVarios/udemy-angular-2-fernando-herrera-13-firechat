@@ -3,9 +3,19 @@ import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 
+// import { AngularFireModule } from "angularfire2";
+// import { AngularFireStorageModule } from "angularfire2/storage";
+// import { AngularFireAuthModule } from "angularfire2/auth";
+import { environment } from "../environments/environment";
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule],
+  imports: [
+    BrowserModule,
+    //AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireStorageModule,
+    // AngularFireAuthModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
