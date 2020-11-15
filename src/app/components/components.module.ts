@@ -3,7 +3,9 @@ import { CommonModule } from "@angular/common";
 
 import { ChatComponent } from "./chat/chat.component";
 import { FormsModule } from "@angular/forms";
-const declarations = [ChatComponent];
+import { LoginComponent } from "./login/login.component";
+
+const declarations = [ChatComponent, LoginComponent];
 
 @NgModule({
   declarations: [...declarations],

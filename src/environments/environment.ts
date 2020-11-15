@@ -5,7 +5,7 @@ import data from "./config.json";
 
 export const environment = {
   production: false,
-  firebase: { ...data.firebaseConfig },
+  firebase: { ...data.firebase },
 };
 
 /*
