@@ -14,15 +14,20 @@ export class ChatService {
   private _collection = "chat";
   private itemsCollection: AngularFirestoreCollection<mensajeModel>;
   public chats: mensajeModel[] = [];
-  constructor(private _afs: AngularFirestore) {
-    this.itemsCollection = this._afs.collection<mensajeModel>(this._collection);
-  }
+  constructor(private _afs: AngularFirestore) {}
 
   public cargarMensajes(): Observable<mensajeModel[]> {
+    this.itemsCollection = this._afs.collection<mensajeModel>(
+      this._collection,
+      (ref) => ref.orderBy("fecha", "desc").limit(10)
+    );
     return this.itemsCollection.valueChanges().pipe(
       map((chat: mensajeModel[]) => {
-        this.chats = chat;
-        return chat;
+        this.chats = [];
+        for (let cha of chat) {
+          this.chats.unshift(cha);
+        }
+        return this.chats;
       })
     );
   }
