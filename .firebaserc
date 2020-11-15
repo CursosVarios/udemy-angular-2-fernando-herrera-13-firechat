@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "curso-firechat-201f9": {
+      "hosting": {
+        "app-angular2-firechat": [
+          "curso-firechat-201f9"
+        ]
+      }
+    }
+  }
+}
