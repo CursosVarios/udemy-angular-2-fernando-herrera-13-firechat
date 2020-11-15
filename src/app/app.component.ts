@@ -9,15 +9,5 @@ import { Observable } from "rxjs";
 })
 export class AppComponent {
   title = "app-angular2-firechat";
-  item$: Observable<any[]>;
-  items: any = {};
-  constructor(firestore: AngularFirestore) {
-    firestore
-      .collection("chat")
-      .valueChanges()
-      .subscribe((item) => {
-        console.log(item);
-        this.items = item;
-      });
-  }
+  constructor() {}
 }
