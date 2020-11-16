@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
+import { ChatService } from "./providers/chat.service";
 
-import { AngularFirestore } from "@angular/fire/firestore";
-import { Observable } from "rxjs";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -9,5 +8,8 @@ import { Observable } from "rxjs";
 })
 export class AppComponent {
   title = "app-angular2-firechat";
-  constructor() {}
+  constructor(public _chatService: ChatService) {}
+  logOut() {
+    this._chatService.logOut();
+  }
 }

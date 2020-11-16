@@ -18,16 +18,19 @@ export class ChatService {
   private itemsCollection: AngularFirestoreCollection<mensajeModel>;
   public chats: mensajeModel[] = [];
   private usuario: any = {};
+  public userLogin: boolean=false;
   constructor(
     private _afs: AngularFirestore,
     private _afAuth: AngularFireAuth
   ) {
     this._afAuth.authState.subscribe((user) => {
       if (!user) {
+        this.userLogin = false;
         return;
       }
+      this.userLogin = true;
       this.usuario.nombre = user.displayName;
-      console.log(this.usuario)
+      console.log(this.usuario);
     });
   }
 
@@ -62,6 +65,8 @@ export class ChatService {
     }
   }
   public logOut() {
+    this.usuario = {};
+    this.userLogin = false;
     this._afAuth.signOut();
   }
 }
