@@ -4,9 +4,9 @@
         <button class="btn btn-outline-dark" (click)="logOut()"> salir </button>
     </div>
     <app-login *ngIf="!_chatService.userLogin"></app-login>
-    <!--
-    <div class="chat-window">
+
+    <div class="chat-window" *ngIf="_chatService.userLogin">
         <app-chat></app-chat>
-    </div> -->
+    </div>
 
 </div>

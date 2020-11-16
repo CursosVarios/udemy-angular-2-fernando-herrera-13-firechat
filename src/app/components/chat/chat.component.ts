@@ -10,7 +10,9 @@ export class ChatComponent implements OnInit {
   public mensaje: string;
   public chats: mensajeModel[];
   elemento: any;
+  public usuario;
   constructor(private _chatService: ChatService) {
+    this.usuario = this._chatService.usuario;
     this._chatService.cargarMensajes().subscribe((e) => {
       //  console.log(e);
       this.chats = e;

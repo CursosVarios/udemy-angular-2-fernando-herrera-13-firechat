@@ -17,7 +17,7 @@ export class ChatService {
   private _collection = "chat";
   private itemsCollection: AngularFirestoreCollection<mensajeModel>;
   public chats: mensajeModel[] = [];
-  private usuario: any = {};
+  public usuario: any = {};
   public userLogin: boolean=false;
   constructor(
     private _afs: AngularFirestore,
@@ -30,6 +30,7 @@ export class ChatService {
       }
       this.userLogin = true;
       this.usuario.nombre = user.displayName;
+      this.usuario.uid = user.uid;
       console.log(this.usuario);
     });
   }
@@ -52,7 +53,8 @@ export class ChatService {
 
   public AgregarMensaje(texto: string) {
     let mensaje: mensajeModel = {
-      nombre: "fernando",
+      nombre: this.usuario.nombre ,
+      uid: this.usuario.uid ,
       mensaje: texto,
       fecha: new Date().getTime(),
     };
